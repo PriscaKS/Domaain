@@ -1,0 +1,722 @@
+
+/* GOOGLE FONTS */
+.ubuntu-light {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .ubuntu-regular {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .ubuntu-medium {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .ubuntu-bold {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  .ubuntu-light-italic {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+  }
+  
+  .ubuntu-regular-italic {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+  }
+  
+  .ubuntu-medium-italic {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+  }
+  
+  .ubuntu-bold-italic {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+
+:root {
+    --nav-bg-color:#00113fe8;
+    --theme-color: #258bc9;
+    --hover-theme-color: #2b8fce;
+    --custom-orange: #258ac99f;
+    --custom-white: white;
+    --custom-black: black;
+    --custom-gray: #f3f4f6;
+    --trans-bg-color: #00113f6c;
+    --custom-bg-grey:#F6F0F0;
+    --custom-red:#c92538;
+    --custom-bg-red:#c10e239a;
+}
+
+
+/* START SIDEBAR FUNCTIONALITY */
+
+
+/* Force hide the overlay */
+#overlay {
+    display: none !important;
+}
+
+/* Only show when has .active class */
+#overlay.active {
+    display: block !important;
+}
+
+
+.rotate-90 {
+    transform: rotate(90deg);
+}
+/* Sidebar scroll styles */
+#sidebar {
+    overflow-y: auto;
+    max-height: 100vh;
+    color: white;
+    transform: translateX(-100%);
+}
+body.sidebar-open #sidebar {
+    transform: translateX(0);
+}
+#sidebar::-webkit-scrollbar {
+    width: 5px;
+}
+#sidebar::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+}
+#sidebar::-webkit-scrollbar-track {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+/* Custom CSS for sidebar transitions */
+#sidebar {
+    transition: transform 0.3s ease-in-out;
+}
+#sidebar.open {
+    transform: translateX(0);
+}
+#overlay {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+#overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* END SIDEBAR FUNCTIONALITY */
+
+
+
+/* START OF THE AUDIO PLAYER MUSIC FUNCTIONALITY */
+input[type="range"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: #ddd; /* Default color for the unfilled portion */
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 8px;
+    border-radius: 5px;
+    background: transparent; /* Make transparent to show the input background */
+}
+
+input[type="range"]::-moz-range-track {
+    height: 8px;
+    border-radius: 5px;
+    background: transparent;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--theme-color); /* Theme color for the thumb */
+    cursor: pointer;
+    margin-top: -4px; /* Centers the thumb on the track */
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--theme-color);
+    cursor: pointer;
+    border: none;
+}
+
+input[type="range"]::-ms-track {
+    width: 100%;
+    height: 8px;
+    background: transparent;
+    border-radius: 5px;
+    border-color: transparent;
+    color: transparent;
+}
+
+input[type="range"]::-ms-fill-lower {
+    background: var(--theme-color);
+    border-radius: 5px;
+}
+
+input[type="range"]::-ms-fill-upper {
+    background: #ddd;
+    border-radius: 5px;
+}
+
+input[type="range"]::-ms-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--theme-color);
+    cursor: pointer;
+}
+
+#musicList {
+    max-height: 420px;
+    overflow-y: auto;
+}
+
+.group {
+    position: relative; /* Ensure this is set to control positioning for child elements */
+}
+
+.volume-slider {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    position: absolute;
+    bottom: 30px; /* Position above the volume icon */
+    background: white;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.group:hover .volume-slider {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* END OF THE AUDIO PLAYER MUSIC FUNCTIONALITY */
+
+
+
+    /* BECOME A VOLUNTEER FROM THE INDEX PAGE */
+  
+    .volunteer-section {
+        position: relative;
+        background: url('/assets/images/flagmw.webp') no-repeat center center/cover;
+        min-height: 50vh; /* Increased height to prevent overlap */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        overflow: hidden;
+        padding: 20px 0; /* Added padding */
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, rgba(11, 10, 35, 0.9) 70%, rgba(255, 0, 0, 0.5));
+    }
+
+    .content {
+        position: relative;
+        z-index: 2;
+        width: 90%;
+    }
+
+    .highlighted-text {
+        font-size: 1.5rem; /* Increased font size */
+        font-weight: bold;
+    }
+
+    .underline {
+        width: 60%;
+        height: 3px;
+        
+        margin: 10px auto 20px auto;
+    }
+
+    .join-btn {
+        
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1.3rem;
+        cursor: pointer;
+        margin: 20px 0;
+        transition: 0.3s ease;
+    }
+
+    .join-btn:hover {
+        background: #2b90cee1;
+    }
+
+    .stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* Default: 4 columns */
+        gap: 40px;
+        margin-top: 30px;
+        width: 100%;
+    }
+
+    .stat-item {
+        text-align: center;
+        border-right: 2px solid rgba(255, 255, 255, 0.3);
+        padding-right: 20px;
+    }
+
+    .stat-item:last-child {
+        border-right: none; /* Remove border on the last item */
+    }
+
+    .icon {
+        font-size: 3rem; /* Bigger icon */
+        margin-bottom: 10px;
+    }
+
+    .slide-in {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.6s ease-out;
+    }
+
+    .slide-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .stats {
+            grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+            gap: 20px;
+        }
+
+        .stat-item {
+            padding-right: 0;
+            border-right: none;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 20px;
+        }
+
+        .stat-item:nth-child(odd) {
+            border-right: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .icon {
+            font-size: 3.5rem; /* Even bigger icons */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .stats {
+            grid-template-columns: 1fr; /* Stack everything in one column */
+        }
+
+        .stat-item {
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .icon {
+            font-size: 4rem; /* Bigger for tiny screens */
+        }
+    }
+/* END OF BECOME A VOLUNTEER FROM THE INDEX PAGE */
+
+/* START MANEFESTO AND VOLUNTEER */
+/* top section for volunteer and manifesto  CONTACT*/
+
+    /* Custom CSS for overlay */
+
+
+    .background-container-event {
+        position: relative;
+        width: 100%;
+        height: 400px; /* Adjust the height of your section */
+        background-image: url('/assets/images/event/DPP-fundraising-dinner-720x400.jpg'); 
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .background-container-music {
+        position: relative;
+        width: 100%;
+        height: 400px; /* Adjust the height of your section */
+        background-image: url('/assets/images/music/charismatic-modern-young-attractive-africanamerican-girl-with-afro-haircut-listening-music-headph.jpg'); 
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .background-container-documents {
+        position: relative;
+        width: 100%;
+        height: 400px; /* Adjust the height of your section */
+        background-image: url('/assets/images/docs/doc.webp'); 
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .background-container-member {
+        position: relative;
+        width: 100%;
+        height: 350px; /* Adjust the height of your section */
+        background-image: url('/assets/images/member.jpg'); 
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .background-container-volunteer {
+        position: relative;
+        width: 100%;
+        height: 300px; /* Adjust the height of your section */
+        background-image: url('/assets/images/close-up-people-volunteer-teamwork-putting-finger-star-shapehands-togetherstack-handsunity-teamwork-world-environment-day.jpg'); 
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .background-container {
+        position: relative;
+        width: 100%;
+        height: 400px; /* Adjust the height of your section */
+        background-image: url('/assets/images/flagmw.webp'); 
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Overlay with gradient */
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            to right, 
+            rgba(0, 0, 128, 0.7), /* Dark blue with 70% opacity */
+            rgba(255, 0, 0, 0.7)  /* Red with 70% opacity */
+        );
+        z-index: 1;
+    }
+
+    /* Text styling */
+    .text-container {
+        position: relative;
+        z-index: 2; /* Ensure text is above the overlay */
+        text-align: center;
+        color: white;
+    }
+
+    .home-link {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 10px; /* Space between "HOME" and "home / contactUs" */
+    }
+
+    .contact-text {
+        font-size: 1.2rem;
+    }
+    
+     /* MANEFESTO CSS PROPETIES */
+
+    .manifesto-item {
+        background-color: white;
+        border-radius: 0.5rem;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        border-left: 4px solid var(--theme-color);
+        opacity: 0;  
+        transform: translateY(20px);  
+    }
+
+    .manifesto-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .manifesto-header {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .manifesto-icon {
+        background-color: var(--theme-color);
+        color: white;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        flex-shrink: 0;
+    }
+
+    .manifesto-title h3 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 0.25rem;
+        line-height: 1.3;
+    }
+
+    .manifesto-description {
+        color: #4b5563;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+        #manifesto-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .manifesto-header {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .manifesto-icon {
+            margin-bottom: 1rem;
+            margin-right: 0;
+        }
+
+        .manifesto-title {
+            width: 100%;
+            text-align: center;
+        }
+    } 
+    /* END VOLUNTEER AND MANEFEST */
+
+
+    /* START OF ANIMATION FOR THE INDEX PAGE */
+
+
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+      width: 100%; 
+    }
+    
+    .carousel-track {
+      display: flex;
+      width: max-content; 
+      position: relative;
+      animation: scroll-left 25s linear infinite; 
+    }
+    
+    @keyframes scroll-left {
+      from {
+        transform: translateX(100%); 
+      }
+      to {
+        transform: translateX(-100%);
+      }
+    }
+    
+    .carousel-item {
+      flex-shrink: 0;
+      width: 250px; 
+      margin: 0 10px; 
+    }
+    
+    
+    
+
+    .stars {
+        background-image: 
+          radial-gradient(2px 2px at 20px 30px, #258bc9, rgba(0, 0, 0, 0)),
+          radial-gradient(2px 2px at 40px 70px, #258bc9, rgba(0, 0, 0, 0)),
+          radial-gradient(2px 2px at 50px 160px, #258bc9, rgba(0, 0, 0, 0)),
+          radial-gradient(2px 2px at 90px 40px, #258bc9, rgba(0, 0, 0, 0)),
+          radial-gradient(2px 2px at 130px 80px, #258bc9, rgba(0, 0, 0, 0)),
+          radial-gradient(2px 2px at 160px 120px, #258bc9, rgba(0, 0, 0, 0));
+        background-repeat: repeat;
+        background-size: 200px 200px;
+        animation: twinkle 5s ease-in-out infinite;
+        opacity: 0.5;
+      }
+      
+      /* Keep the original twinkle animation */
+      @keyframes twinkle {
+        0%, 100% { opacity: 0.5; }
+        50% { opacity: 0.8; }
+      }
+  
+    .timeline-item {
+      position: relative;
+      padding-left: 28px;
+      border-left: 3px solid var(--custom-bg-red);
+      padding-bottom: 20px;
+    }
+  
+    .timeline-item:last-child {
+      border-left: 3px solid transparent;
+    }
+  
+    .year {
+      position: absolute;
+      left: -18px;
+      top: 0;
+      background-color: var(--custom-red);
+      color: var(--custom-white);
+      font-weight: bold;
+      padding: 4px 12px;
+      margin: -10px;
+      border-radius: 20px;
+      font-size: 14px;
+      transform: translateY(-50%);
+    }
+  
+    @keyframes twinkle {
+      0% { opacity: 0.3; }
+      50% { opacity: 0.8; }
+      100% { opacity: 0.3; }
+    }
+  
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+  
+    /* END OF ANIMATION FOR THE INDEX PAGE */
+
+    /* START OF THE FOOTER */
+ 
+/* END OF THE FOOTER */
+
+/* EVENT LAYOUT AND COLORS */
+
+/* :root {
+    --dpp-blue: #0056b3;
+    --dpp-light-blue: #e6f0ff;
+    --dpp-gold: #ffd700;
+    --dpp-white: #ffffff;
+} */
+
+.event-card {
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 15px -3px rgba(0, 86, 179, 0.1);
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 86, 179, 0.2);
+}
+
+.gradient-overlay {
+    background: linear-gradient(to right, rgba(0, 86, 179, 0.9) 0%, rgba(0, 86, 179, 0.7) 100%);
+}
+
+.section-title {
+    position: relative;
+    display: inline-block;
+}
+
+.section-title:after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 3px;
+    background: var(--dpp-gold);
+    bottom: -10px;
+    left: 25%;
+}
+
+.event-date {
+    background: var(--dpp-blue);
+    color: white;
+    transform: rotate(-5deg);
+}
+
+
+/* END OF EVENT LAYOUT AND COLORS */
+
+/*START ANIMATE THE ABOUT SECTION */
+/* Add to your stylesheet */
+#about-section {
+    opacity: 1 !important; /* Override any hiding */
+}
+
+#about-section [class*="overflow-hidden"] img {
+    transition: transform 0.5s ease;
+}
+
+#about-section [class*="overflow-hidden"]:hover img {
+    transform: scale(1.03);
+}
+
+#about-section ul li svg {
+    transition: transform 0.3s ease;
+}
+
+#about-section ul li:hover svg {
+    transform: scale(1.2) rotate(5deg);
+}
+
+/* END ANIMATE ABOUT SECTION */
