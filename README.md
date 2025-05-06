@@ -1,5 +1,6 @@
 # Clone the repository
 git clone https://github.com/ishmaiah-ih/dpp.git
+# go inside the project folder
 cd dpp
 
 # Install PHP dependencies
