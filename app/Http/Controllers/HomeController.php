@@ -17,7 +17,7 @@ class HomeController extends Controller
     }
     public function manifesto2025()
     {
-        return view('frontend.components.manifesto2015');
+        return view('frontend.components.manifesto2025');
     }
     public function loadingscreen()
     {
