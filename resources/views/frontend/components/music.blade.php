@@ -1,29 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>music</title>
-    <!-- TAILWIND -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <!-- GOOGLE FONTS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
-        rel="stylesheet">
-
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="/assets/css/styles.css">
-    <!-- JAVASCRIPT -->
-    <script src="/assets/js/main.js" defer></script>
-    <script src="/assets/js/music.js"></script>
-</head>
+@include('frontend.commons.header', ['pageTitle' => 'Dpp | music'])
 
 <body class="bg-[var(--custom-white)] flex flex-col min-h-screen ubuntu-light">
     <!-- NAAVBAR CALL-->
@@ -49,7 +24,7 @@
     </div>
 
     <!-- Music Section -->
-    <section class="py-16 bg-white">
+    {{-- <section class="py-16 bg-white">
         <div class="max-w-6xl mx-auto flex flex-col items-center justify-center text-center space-y-6">
             <h2 class="text-4xl text-[var(--theme-color)] font-bold">DPP Party Music Vibes</h2>
             <p class="text-lg text-[var(--custom-black)]">Feel the rhythm, enjoy the beats, and celebrate with the <span
@@ -68,7 +43,40 @@
             <!-- Right Side: Empty space for alignment if needed -->
             <div class="flex-1"></div>
         </div>
-    </section>
+    </section> --}}
+    <div id="musicLis" class="bg-gray-100 rounded-lg p-10 shadow-lg w-full md:w-[80%] mx-auto">
+        @if ($music->isEmpty())
+            <p class="text-center text-gray-600">No music found. Please check back later!</p>
+        @else
+            <ul class="space-y-6">
+                @foreach ($music as $track)
+                    <li
+                        class="flex flex-col md:flex-row items-center justify-between bg-white p-4 rounded shadow-sm hover:bg-gray-50 transition">
+                        <div class="flex items-center space-x-4">
+                            <div class="text-purple-600 text-xl">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div>
+                                <p class="text-lg font-semibold text-gray-800">{{ $track->title }}</p>
+                                <p class="text-sm text-gray-500">{{ $track->artist }} &bull; {{ $track->category }}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 mt-4 md:mt-0">
+                            <audio controls class="w-64">
+                                <source src="{{ asset('storage/' . $track->file) }}" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                            {{-- <a href="{{ asset('storage/' . $track->file) }}" download
+                                class="text-green-600 hover:text-green-800" title="Download">
+                                <i class="fas fa-download text-xl"></i>
+                            </a> --}}
+                        </div>
+                    </li>
+                @endforeach
+            </ul>
+        @endif
+    </div>
+
 
     <!-- FOOTER section call -->
     <div class="w-full" id="footer-container"></div>
