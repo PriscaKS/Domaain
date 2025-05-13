@@ -76,6 +76,8 @@
                         Music</a></li>
                 <li><a href="{{ route('loading-screen') }}?redirect={{ route('events') }}"
                         class="block px-4 py-2">Event Gallery</a></li>
+                <li><a href="{{ route('loading-screen') }}?redirect={{ route('news') }}"
+                        class="block px-4 py-2">DPP News</a></li>
             </ul>
         </li>
 

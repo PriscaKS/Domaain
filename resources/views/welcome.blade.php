@@ -1,49 +1,4 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    {{-- priscah headers --}}
-
-    <title>DPP Official website</title>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- TAILWIND -->
-
-    <!-- MAIN JAVASCRIPT -->
-    {{-- <script src="{{ asset('assets/js/main.js') }}"></script> --}}
-
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
-
-    <!-- GOOGLE FONTS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
-        rel="stylesheet">
-
-    {{-- <script src="{{ asset('assets/js/music.js') }}"></script> --}}
-    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
-
-    <!-- JS -->
-    {{-- end priscah --}}
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
-
-    <!-- Styles / Scripts -->
-    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @else
-        <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
-    @endif
-</head>
+@include('frontend.commons.header', ['pageTitle' => 'Dpp | Home'])
 
 <body class="bg-gray-100 ubuntu-light">
 
@@ -58,8 +13,8 @@
 
 
     <!-- Overlay - Using display:none to ensure it's hidden -->
-    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40" style="display: none;"
-        onclick="closeSidebar()"></div>
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40" style="display: none;" onclick="closeSidebar()">
+    </div>
 
     <!-- Placeholder for sidebar -->
     {{-- <div id="sidebar-container"></div> --}}
@@ -298,6 +253,25 @@
         <p class="text-lg text-[var(--theme-color)] mt-2">Meet Our Leaders</p>
 
         <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-6 md:px-10 max-w-7xl mx-auto">
+            @foreach ($leaders as $leader)
+                <div class="relative bg-white rounded-lg shadow-md hover:shadow-xl overflow-hidden">
+                    <div class="w-full aspect-[3/4] overflow-hidden relative">
+                        <img src="{{ asset('storage/' . $leader->path) }}" alt="{{ $leader->title }}"
+                            class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                    <div class="absolute bottom-0 bg-[var(--custom-orange)] text-white w-full py-4 px-6">
+                        <h3 class="text-xl font-semibold">{{ $leader->title }}</h3>
+                        <p class="text-sm">{{ $leader->description }}</p>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </section>
+
+    {{-- <section class="py-10 bg-gray text-center">
+        <p class="text-lg text-[var(--theme-color)] mt-2">Meet Our Leaders</p>
+
+        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-6 md:px-10 max-w-7xl mx-auto">
             <!-- President -->
             <div
                 class="relative bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden leader-card">
@@ -389,19 +363,21 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
-    <!-- MUSIC SECTION -->
+
     <section class="py-10 bg-white px-10">
         <div class="py-4 flex flex-col items-center justify-center text-center h-full">
             <h2 class="text-md text-[var(--theme-color)] font-bold" id="music-title">DPP Music Vibes</h2>
-            <p class="text-lg text-[var(--custom-black)] mt-2" id="music-subtitle">Feel the rhythm, enjoy the beats,
-                and celebrate with the <span class="text-[var(--theme-color)]">best</span> tunes!</p>
+            <p class="text-lg text-[var(--custom-black)] mt-2" id="music-subtitle">
+                Feel the rhythm, enjoy the beats, and celebrate with the
+                <span class="text-[var(--theme-color)]">best</span> tunes!
+            </p>
         </div>
 
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center">
-            <!-- Left Side: Background Image with Overlay -->
-            <div class="relative w-full md:w-1/2 h-80 md:h-[400px] rounded-lg overflow-hidden" id="music-image">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-6">
+            <!-- Left: Background Image -->
+            <div class="relative w-full md:w-1/2 h-[400px] rounded-lg overflow-hidden">
                 <img src="{{ asset('assets/images/music/charming-amazing-afro-american-young-woman-sunglasses-dancing.jpg') }}"
                     alt="Person Listening to Music" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
@@ -409,13 +385,29 @@
                 </div>
             </div>
 
-            <!-- Music Player Container -->
-            <div id="musicList" class="bg-gray-100 rounded-lg p-6 shadow-lg w-full md:w-[80%] mx-auto"
-                id="music-player">
-                <!-- Music player content goes here -->
+            <!-- Right: Music Player -->
+            <div class="w-full md:w-1/2 h-[400px] overflow-y-auto bg-gray-100 rounded-lg p-6 shadow-lg">
+                @forelse ($music as $track)
+                    <div class="mb-6 border-b border-gray-300 pb-4">
+                        <h3 class="text-lg font-semibold text-gray-800">{{ $track->title }}</h3>
+                        <p class="text-sm text-gray-600 mb-2">
+                            By <span class="font-medium">{{ $track->artist }}</span>
+                            — <span class="italic">{{ $track->category }}</span>
+                        </p>
+                        <audio controls class="w-full rounded">
+                            <source src="{{ asset('storage/' . $track->file) }}" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                @empty
+                    <p class="text-gray-500">No music tracks available.</p>
+                @endforelse
             </div>
         </div>
     </section>
+
+
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

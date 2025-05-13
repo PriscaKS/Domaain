@@ -1,96 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
+@include('frontend.commons.header', ['pageTitle' => 'Dpp | policies'])
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>manefesto2019</title>
-    <!-- TAILWIND -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+    :root {
+        --dpp-blue: #0056b3;
+        --dpp-red: #e63946;
+        --dpp-gold: #ffd700;
+        --dpp-dark: #1d3557;
+        --custom-white: #f9f9f9;
+    }
 
-    <!-- GOOGLE FONTS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
-        rel="stylesheet">
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--custom-white);
+    }
 
+    .playfair {
+        font-family: 'Playfair Display', serif;
+    }
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="/assets/css/styles.css">
-    <!-- JAVASCRIPT -->
-    <script src="/assets/js/main.js" defer></script>
+    .hero-gradient {
+        background: linear-gradient(135deg, rgba(0, 86, 179, 0.9) 0%, rgba(230, 57, 70, 0.85) 100%);
+    }
 
-    <style>
-        :root {
-            --dpp-blue: #0056b3;
-            --dpp-red: #e63946;
-            --dpp-gold: #ffd700;
-            --dpp-dark: #1d3557;
-            --custom-white: #f9f9f9;
+    .policy-card {
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        border-top: 4px solid var(--dpp-red);
+    }
+
+    .policy-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+    }
+
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .timeline-dot {
+        box-shadow: 0 0 0 8px rgba(230, 57, 70, 0.2);
+    }
+
+    @keyframes float {
+
+        0%,
+        100% {
+            transform: translateY(0);
         }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--custom-white);
+        50% {
+            transform: translateY(-20px);
         }
+    }
 
-        .playfair {
-            font-family: 'Playfair Display', serif;
-        }
+    .text-gradient {
+        background: linear-gradient(90deg, var(--dpp-blue), var(--dpp-red));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
 
-        .hero-gradient {
-            background: linear-gradient(135deg, rgba(0, 86, 179, 0.9) 0%, rgba(230, 57, 70, 0.85) 100%);
-        }
-
-        .policy-card {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-            border-top: 4px solid var(--dpp-red);
-        }
-
-        .policy-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-        }
-
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .timeline-dot {
-            box-shadow: 0 0 0 8px rgba(230, 57, 70, 0.2);
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        .text-gradient {
-            background: linear-gradient(90deg, var(--dpp-blue), var(--dpp-red));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .parallax-section {
-            background-attachment: fixed;
-        }
-    </style>
-
-</head>
-
-</head>
+    .parallax-section {
+        background-attachment: fixed;
+    }
+</style>
 
 <body class="bg-[var(--custom-white)] flex flex-col min-h-screen ubuntu-light">
     <!-- NAAVBAR CALL-->
@@ -103,8 +75,8 @@
     @include('frontend.components.sidebar')
 
     <!-- Overlay -->
-    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40" style="display: none;"
-        onclick="closeSidebar()"></div>
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40" style="display: none;" onclick="closeSidebar()">
+    </div>
 
     <!-- Background Image Section with Overlay -->
     <div class="background-container-documents">

@@ -1,7 +1,7 @@
 <!-- admin/enquiries.blade.php -->
 @extends('layouts.admin')
 
-@section('title', 'DPP Admin Dashboard')
+@section('title', 'DPP Dashboard | enquiries  ')
 
 @section('content')
 
