@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\News;
-use App\Models\Music;
 use App\Models\Activity;
 
 
@@ -25,7 +24,8 @@ class AdminController extends Controller
     public function activity()
     {
 
-        return view('admin.activity');
+        $activities = Activity::latest()->paginate(8);
+        return view('admin.activity', compact('activities'));
     }
     public function uploads()
     {

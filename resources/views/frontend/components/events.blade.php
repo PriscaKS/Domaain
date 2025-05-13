@@ -1,20 +1,19 @@
-
 @include('frontend.commons.header', ['pageTitle' => 'Events'])
 
 
 <body class="bg-[var(--custom-white)] flex flex-col min-h-screen ubuntu-light">
-    <!-- NAAVBAR CALL-->
+    <!-- NAVBAR CALL-->
     {{-- <div id="navbar-container" class="sticky top-0 bg-white z-50 shadow-md"></div> --}}
     <div class="sticky top-0 bg-white z-50 shadow-md">
         @include('frontend.components.navbar')
     </div>
-    <!-- SSIDEBAR-->
+    <!-- SIDEBAR-->
     {{-- <div id="sidebar-container"></div> --}}
 
     @include('frontend.components.sidebar')
     <!-- Overlay -->
-    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40" style="display: none;"
-        onclick="closeSidebar()"></div>
+    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40" style="display: none;" onclick="closeSidebar()">
+    </div>
 
     <!-- Background Image Section with Overlay -->
     <div class="background-container-event">
@@ -28,7 +27,7 @@
     <!-- Event Section -->
 
     <!-- Event Gallery Section -->
-    <section class="py-20 px-4">
+    {{-- <section class="py-20 px-4">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800">Our Historic Gatherings</h2>
@@ -231,8 +230,62 @@
             </div>
         </div>
     </section>
-    </div>
+     --}}
+    <section class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl md:text-4xl font-bold text-gray-800">Our Historic Gatherings</h2>
+                <p class="mt-6 text-lg text-gray-600 max-w-3xl mx-auto">
+                    The Democratic Progressive Party has been at the forefront of Malawi's political landscape, hosting
+                    unforgettable events that have shaped our nation's future.
+                    Browse through our gallery of past events and relive the passion, the speeches, and the unity that
+                    defines DPP.
+                </p>
+            </div>
+
+            <!-- Event Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                @foreach ($events as $event)
+                    <div class="event-card bg-white rounded-xl overflow-hidden">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="{{ $event->image_url }}" alt="{{ $event->title }}"
+                                class="w-full h-full object-cover transition duration-500 hover:scale-105">
+                            <div
+                                class="absolute top-4 bg-slate-400 right-4 event-date px-4 py-2 rounded font-bold shadow-lg">
+                                {{ $event->event_date }}
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center mb-3">
+                                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                                    <i class="fas fa-map-marker-alt text-blue-600"></i>
+                                </div>
+                                <span class="text-gray-600">{{ $event->location }}</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800 mb-3">{{ $event->title }}</h3>
+                            <p class="text-gray-600 mb-4"> {{ \Illuminate\Support\Str::limit($event->description, 100) }}
+                            </p>
+
+                            <div class="flex justify-between items-center">
+                                <a href="#"
+                                    class="text-blue-600 font-medium hover:text-blue-800 flex items-center">
+                                    View Gallery <i class="fas fa-arrow-right ml-2"></i>
+                                </a>
+                                <div class="flex space-x-2">
+                                    @foreach ($event->tags ?? [] as $tag)
+                                        <span
+                                            class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">{{ $tag }}</span>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
     </section>
+
+
 
     <!-- Testimonials Section -->
     <section class=" bg-gradient-to-b from-white to-gray-50">

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\News;
 use App\Models\Music;
 use App\Models\Image;
+use App\Models\Event;
 
 
 class HomeController extends Controller
@@ -46,7 +47,8 @@ class HomeController extends Controller
     }
     public function events()
     {
-        return view('frontend.components.events');
+        $events = Event::latest()->get();
+        return view('frontend.components.events', compact('events'));
     }
     public function news()
     {
