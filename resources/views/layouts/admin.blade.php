@@ -100,6 +100,15 @@
                 <i class="fas fa-envelope w-5 h-5 mr-3"></i>
                 <span>Email Inquiries</span>
             </a>
+
+            {{-- events --}}
+
+            <a href="{{ route('events.index') }}"
+                class="@if (request()->routeIs('events.index')) sidebar-active @endif flex items-center py-2 px-3 rounded-lg @if (request()->routeIs('events.index')) text-indigo-600 @else text-gray-600 hover:bg-gray-50 @endif mb-2">
+                <i class="fas fa-calendar w-5 h-5 mr-3"></i>
+                <span>Events</span>
+            </a>
+            {{-- images --}}
             <a href="{{ route('images.index') }}"
                 class="@if (request()->routeIs('images.index')) sidebar-active @endif flex items-center py-2 px-3 rounded-lg @if (request()->routeIs('images.index')) text-indigo-600 @else text-gray-600 hover:bg-gray-50 @endif mb-2">
                 <i class="fas fa-image w-5 h-5 mr-3"></i>

@@ -50,7 +50,7 @@ class MusicController extends Controller
 
 
         logActivity(
-            'music_upload',
+            'create',
             'New music uploaded',
             'Track: ' . $request->title
         );

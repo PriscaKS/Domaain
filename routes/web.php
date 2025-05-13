@@ -5,8 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
-use App\Models\Music;
+
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\EventController;
+
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\MusicController;
 
@@ -37,12 +39,12 @@ Route::get('/enquiries', [AdminController::class, 'enquiries'])->name('admin.ema
 Route::get('/transactions', [AdminController::class, 'transactions'])->name('admin.transactions');
 Route::get('/settings', [AdminController::class, 'settings'])->name('admin.settings');
 
-// Home Controllers mehtods 
+// Home Controllers methods 
 Route::get('/membership', [HomeController::class, 'membership'])->name('membership');
 Route::get('/loadingscreen', [HomeController::class, 'loadingscreen'])->name('loading-screen');
 Route::get('/contacts', [HomeController::class, 'contacts'])->name('contact');
 Route::get('/musics', [HomeController::class, 'music'])->name('music');
-Route::get('/events', [HomeController::class, 'events'])->name('events');
+Route::get('/dpp_events', [HomeController::class, 'events'])->name('events');
 Route::get('/dpp_news', [HomeController::class, 'news'])->name('news');
 Route::get('/news_detail/{id}', [HomeController::class, 'news_detail'])->name('news_detail');
 Route::get('/donate', [HomeController::class, 'donate'])->name('donate');
@@ -58,6 +60,9 @@ Route::resource('news', NewsController::class);
 Route::resource('music', MusicController::class);
 // images
 Route::resource('images', ImageController::class);
+// events 
+Route::resource('events', EventController::class);
+
 // partials
 
 Route::get('/partials/footer', function () {
