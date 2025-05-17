@@ -44,7 +44,7 @@
                                 class="w-1.5 h-1.5 rounded-full bg-[var(--theme-color)] mr-2 group-hover:w-2 group-hover:h-2 transition-all duration-200"></span>
                             About the Party
                         </a></li>
-                    <li><a href="{{ url('policies')}}"
+                    <li><a href="{{ url('policies') }}"
                             class="text-gray-300 hover:text-[var(--theme-color)] transition-colors duration-200 flex items-center group">
                             <span
                                 class="w-1.5 h-1.5 rounded-full bg-[var(--theme-color)] mr-2 group-hover:w-2 group-hover:h-2 transition-all duration-200"></span>
@@ -67,6 +67,12 @@
                             <span
                                 class="w-1.5 h-1.5 rounded-full bg-[var(--theme-color)] mr-2 group-hover:w-2 group-hover:h-2 transition-all duration-200"></span>
                             Contact Us
+                        </a></li>
+                    <li><a href="{{ url('login') }}"
+                            class="text-gray-300 hover:text-[var(--theme-color)] transition-colors duration-200 flex items-center group">
+                            <span
+                                class="w-1.5 h-1.5 rounded-full bg-[var(--theme-color)] mr-2 group-hover:w-2 group-hover:h-2 transition-all duration-200"></span>
+                            Admin
                         </a></li>
                 </ul>
             </div>

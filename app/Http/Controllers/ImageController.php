@@ -51,10 +51,16 @@ class ImageController extends Controller
         return redirect()->route('images.index')->with('success', 'Image uploaded successfully.');
     }
 
+    public function edit()
+    {
+
+        return view('frontend.images.edit');
+    }
+
     public function destroy(Image $image)
     {
         Storage::disk('public')->delete($image->path);
-        $title = $image->title; 
+        $title = $image->title;
         $image->delete();
         logActivity(
             'delete',

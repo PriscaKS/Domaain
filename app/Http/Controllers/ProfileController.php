@@ -33,6 +33,11 @@ class ProfileController extends Controller
         }
 
         $request->user()->save();
+        logActivity(
+            'update_account',
+            'User updated their account credentials',
+            'User: ' . Auth::user()->name
+        );
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
@@ -42,6 +47,11 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        logActivity(
+            'delete_account',
+            'User deleted their account',
+            'User: ' . Auth::user()->name
+        );
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current_password'],
         ]);

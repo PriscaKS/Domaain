@@ -1,6 +1,6 @@
 <!-- layouts/admin.blade.php -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="{{ session('theme') === 'dark' ? 'dark' : '' }}">
 
 <head>
     <meta charset="UTF-8">
@@ -9,10 +9,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+
     <style>
         .sidebar-active {
-            border-left: 4px solid #4F46E5;
-            background-color: rgba(79, 70, 229, 0.1);
+            border-left: 4px solid #341397;
+            background-color: rgba(18, 12, 135, 0.1);
         }
 
         .upload-area {
@@ -39,11 +40,23 @@
         }
     </style>
     @yield('styles')
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
+
+
 </head>
 
-<body class="bg-gray-50 h-screen flex overflow-hidden">
+<body class="bg-gray-50 h-screen flex overflow-hidden "
+    style="font-family: 'Ubuntu', sans-serif;">
     <!-- Sidebar -->
-    <div id="sidebar" class="sidebar bg-white w-64 shadow-lg h-full flex flex-col">
+    <div id="sidebar" class="sidebar bg-white w-64 shadow-lg h-full flex flex-col dark:bg-gray-900 dark:text-white">
         <div class="p-5 border-b border-gray-100">
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
@@ -53,9 +66,7 @@
                     </div>
                     <h1 class="ml-3 text-xl font-bold text-gray-800">DPP Admin</h1>
                 </div>
-                <button id="sidebar-toggle" class="md:hidden text-gray-500 hover:text-gray-800">
-                    <i class="fas fa-bars"></i>
-                </button>
+
             </div>
         </div>
 
@@ -134,7 +145,7 @@
 
         <div class="p-4 border-t border-gray-100">
             <div class="flex items-center">
-                <img src="{{ asset('images/admin-avatar.jpg') }}" alt="Admin Avatar" class="w-10 h-10 rounded-full">
+                <img src="{{ asset('admin-avatar.jpg') }}" alt="Admin Avatar" class="w-10 h-10 rounded-full">
                 <div class="ml-3">
                     <p class="text-sm font-medium text-gray-800">{{ auth()->user()->name ?? 'Admin User' }}</p>
                     <p class="text-xs text-gray-500">{{ auth()->user()->email ?? 'admin@dpp.org' }}</p>
@@ -163,14 +174,44 @@
                         <i class="fas fa-search text-gray-400"></i>
                     </span>
                     <input type="text" placeholder="Search..."
-                        class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-red-700">
                 </div>
 
                 <div class="flex items-center">
+                    {{-- theme --}}
+                    <div class="flex items-center space-x-2">
+                        <span class="text-sm text-green-400">Light</span>
+                        {{-- <form method="POST" action="{{ route('toggle.theme') }}">
+                            @csrf
+                            <button type="submit"
+                                class="w-10 h-5 flex items-center bg-gray-300 dark:bg-gray-600 rounded-full p-1 transition duration-300 focus:outline-none">
+                                <div
+                                    class="bg-white w-4 h-4 rounded-full shadow-md transform transition duration-300 dark:translate-x-5">
+                                </div>
+                            </button>
+                        </form> --}}
+                        <form method="POST" action="{{ route('toggle.theme') }}">
+                            @csrf
+                            <button type="submit"
+                                class="relative w-12 h-6 rounded-full transition-colors duration-300 focus:outline-none
+        {{ session('theme') === 'dark' ? 'bg-gray-700' : 'bg-gray-300' }}">
+                                <span
+                                    class="absolute left-0 top-0 w-6 h-6 bg-white rounded-full shadow transform transition-transform duration-300
+            {{ session('theme') === 'dark' ? 'translate-x-6' : '' }}"></span>
+                            </button>
+                        </form>
+
+                        <span class="text-sm text-green-400">Dark</span>
+                    </div>
+
+                    {{-- end theme  --}}
+
                     <button class="relative p-2 text-gray-500 hover:text-gray-700 mr-3">
                         <i class="fas fa-bell"></i>
                         <span class="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span>
                     </button>
+
+
 
                     <button class="relative p-2 text-gray-500 hover:text-gray-700 mr-3">
                         <i class="fas fa-envelope"></i>
@@ -179,14 +220,44 @@
 
                     <div class="border-l border-gray-300 h-6 mx-3"></div>
 
-                    <div class="relative">
-                        <button class="flex items-center focus:outline-none">
-                            <img src="{{ asset('images/admin-avatar.jpg') }}" alt="User"
-                                class="h-8 w-8 rounded-full">
-                            <span
-                                class="ml-2 text-sm font-medium text-gray-700 hidden md:block">{{ auth()->user()->name ?? 'Admin User' }}</span>
-                            <i class="fas fa-chevron-down ml-1 text-xs text-gray-500 hidden md:block"></i>
-                        </button>
+
+                    <div class="hidden sm:flex sm:items-center sm:ms-6">
+                        <img src="{{ asset('admin-avatar.jpg') }}" alt="User" class="h-8 w-8 rounded-full">
+                        <x-dropdown align="right" width="48">
+
+                            <x-slot name="trigger">
+                                <button
+                                    class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                                    <div>{{ Auth::user()->name }}</div>
+
+                                    <div class="ms-1">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <x-dropdown-link :href="route('admin.settings')">
+                                    {{ __('settings') }}
+                                </x-dropdown-link>
+
+                                <!-- Authentication -->
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+
+                                    <x-dropdown-link :href="route('logout')"
+                                        onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                        {{ __('Log Out') }}
+                                    </x-dropdown-link>
+                                </form>
+                            </x-slot>
+                        </x-dropdown>
                     </div>
                 </div>
             </div>
@@ -202,24 +273,31 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
 
-    <!-- Custom JavaScript -->
+   
     <script>
-        // Toggle sidebar on mobile
-        document.getElementById('mobile-toggle').addEventListener('click', function() {
-            document.getElementById('sidebar').classList.toggle('collapsed');
-        });
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('collapsed');
+        }
 
-        // Close sidebar when clicking outside on mobile
+        // Use only the header button
+        const mobileToggle = document.getElementById('mobile-toggle');
+        mobileToggle?.addEventListener('click', toggleSidebar);
+
+        // Optional: Close sidebar when clicking outside (only on mobile)
         document.addEventListener('click', function(event) {
             const sidebar = document.getElementById('sidebar');
-            const toggleBtn = document.getElementById('mobile-toggle');
 
-            if (window.innerWidth <= 768 && !sidebar.contains(event.target) && event.target !== toggleBtn) {
+            if (
+                window.innerWidth <= 768 &&
+                !sidebar.contains(event.target) &&
+                !mobileToggle.contains(event.target)
+            ) {
                 sidebar.classList.add('collapsed');
             }
         });
 
-        // File upload preview functionality
+        // File upload name display
         document.querySelectorAll('input[type="file"]').forEach(input => {
             input.addEventListener('change', function(e) {
                 const fileName = e.target.files[0]?.name || 'No file chosen';
@@ -230,6 +308,8 @@
             });
         });
     </script>
+
+
 
     @yield('scripts')
     <script src="//unpkg.com/alpinejs" defer></script>

@@ -20,6 +20,8 @@ if (!function_exists('getActivityColor')) {
             'create' => 'bg-green-500',
             'update' => 'bg-blue-500',
             'delete' => 'bg-red-500',
+            'update_account' => 'bg-blue-100',
+            'delete_account' => 'bg-red-800',
             'news'   => 'bg-purple-500',
             'music_upload'  => 'bg-yellow-500', 
             'message' => 'bg-red-600',

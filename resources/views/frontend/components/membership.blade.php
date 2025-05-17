@@ -1,4 +1,4 @@
-@include('frontend.commons.header')
+@include('frontend.commons.header', ['pageTitle' => 'Dpp | Membership'])
 
 
 <body class="bg-[var(--custom-white)] flex flex-col min-h-screen ubuntu-light">
@@ -168,19 +168,7 @@
                 <div class="bg-gray-50 p-4 rounded-lg mb-6">
                     <h3 class="text-lg font-bold text-gray-800 mb-4">Membership Details</h3>
                     <div class="space-y-4">
-                        <div>
-                            <label class="block font-medium text-gray-700">Membership Type*</label>
-                            <select name="membershipType"
-                                class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                                required>
-                                <option value="">Select Membership Type</option>
-                                <option value="standard">Standard Membership (MKW 10,000/year)</option>
-                                <option value="student">Student Membership (MKW 20,000/year)</option>
-                                <option value="senior">Senior Membership (MKW 30,000/year)</option>
-                                <option value="family">Family Membership (MKW 40,000/year)</option>
-                                <option value="lifetime">Lifetime Membership (MKW 100,000)</option>
-                            </select>
-                        </div>
+                        
                         <div>
                             <label class="block font-medium text-gray-700">Areas of Interest (select all that
                                 apply)</label>
