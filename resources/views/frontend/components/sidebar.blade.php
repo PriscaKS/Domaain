@@ -79,18 +79,3 @@
     </div>
 </aside>
 
-
-<!-- JavaScript -->
-<script>
-    function toggleDropdown(id) {
-        const el = document.getElementById(id);
-        const arrow = document.getElementById(`${id}-arrow`);
-        if (el.classList.contains('hidden')) {
-            el.classList.remove('hidden');
-            arrow.classList.replace('fa-chevron-right', 'fa-chevron-down');
-        } else {
-            el.classList.add('hidden');
-            arrow.classList.replace('fa-chevron-down', 'fa-chevron-right');
-        }
-    }
-</script>

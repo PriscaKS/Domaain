@@ -2,14 +2,14 @@
 
 @extends('layouts.admin')
 
-@section('title', 'DPP Admin Dashboard')
+@section('title', 'DPP | Admin Dashboard')
 
 @section('content')
     <div class="mb-8">
-        <h1 class="text-2xl font-bold text-gray-800">Admin / Dashboard</h1>
-        <p class="text-gray-600">Welcome back! Here's what's happening today.</p>
+        <h1 class="text-2xl font-bold text-gray-800 ">Admin / Dashboard</h1>
+        <p class="text-gray-600">Welcome back! </p>
     </div>
-
+    @include('frontend.commons.alerts')
     <!-- Stats Cards -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <div class="bg-white rounded-lg shadow p-6">
@@ -133,6 +133,7 @@
         ? 'text-green-800'
         : ($activity->type === 'update'
             ? 'text-blue-800'
+            
             : ($activity->type === 'delete'
                 ? 'text-red-800'
                 : ($activity->type === 'logout'

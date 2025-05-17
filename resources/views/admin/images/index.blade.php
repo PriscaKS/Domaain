@@ -4,10 +4,10 @@
 
 @section('content')
     <div class="container mx-auto px-6 py-10">
+        {{-- alert --}}
+        @include('frontend.commons.alerts')
         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
             <h1 class="text-3xl font-bold text-gray-900">Image Library</h1>
-            {{-- alert --}}
-            @include('frontend.commons.alerts')
 
             <a href="{{ route('admin.uploads') }}"
                 class="px-5 py-2.5 bg-indigo-600 text-white rounded-lg shadow-sm hover:bg-indigo-700 transition duration-300 flex items-center justify-center gap-2 font-medium">

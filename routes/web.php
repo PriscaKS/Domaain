@@ -11,7 +11,7 @@ use App\Http\Controllers\EventController;
 
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\MusicController;
-
+use App\Http\Controllers\ThemeController;
 
 Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 
@@ -29,16 +29,24 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 //Route::prefix('admin')->middleware('auth', 'is_admin')->group(function () {
-Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-//});
-Route::get('/activity', [AdminController::class, 'activity'])->name('admin.activity');
-Route::get('/uploads', [AdminController::class, 'uploads'])->name('admin.uploads');
-Route::get('/admin_news', [AdminController::class, 'news'])->name('admin.news');
-Route::get('/enquiries', [AdminController::class, 'enquiries'])->name('admin.emails');
-// Route::get('/admin_music', [AdminController::class, 'music'])->name('admin.music');
-Route::get('/transactions', [AdminController::class, 'transactions'])->name('admin.transactions');
-Route::get('/settings', [AdminController::class, 'settings'])->name('admin.settings');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/activity', [AdminController::class, 'activity'])->name('admin.activity');
+    Route::get('/uploads', [AdminController::class, 'uploads'])->name('admin.uploads');
+    Route::get('/admin_news', [AdminController::class, 'news'])->name('admin.news');
+    Route::get('/enquiries', [AdminController::class, 'enquiries'])->name('admin.emails');
+    Route::get('/transactions', [AdminController::class, 'transactions'])->name('admin.transactions');
+    Route::get('/settings', [AdminController::class, 'settings'])->name('admin.settings');
 
+    // news
+    Route::resource('news', NewsController::class);
+    //music
+    Route::resource('music', MusicController::class);
+    // images
+    Route::resource('images', ImageController::class);
+    // events 
+    Route::resource('events', EventController::class);
+});
 // Home Controllers methods 
 Route::get('/membership', [HomeController::class, 'membership'])->name('membership');
 Route::get('/loadingscreen', [HomeController::class, 'loadingscreen'])->name('loading-screen');
@@ -54,14 +62,7 @@ Route::get('/manifesto2019', [HomeController::class, 'manifesto2019'])->name('ma
 Route::get('/manifesto2025', [HomeController::class, 'manifesto2025'])->name('manifesto2025');
 Route::get('/volunteer', [HomeController::class, 'volunteer'])->name('volunteer');
 
-// news
-Route::resource('news', NewsController::class);
-//music
-Route::resource('music', MusicController::class);
-// images
-Route::resource('images', ImageController::class);
-// events 
-Route::resource('events', EventController::class);
+
 
 // partials
 
@@ -72,3 +73,7 @@ Route::get('/partials/footer', function () {
 Route::get('/partials/history', function () {
     return view('partials.history');
 });
+
+// ThemeController
+
+Route::post('/toggle-theme', [ThemeController::class, 'toggle'])->name('toggle.theme');

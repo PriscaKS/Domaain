@@ -268,105 +268,49 @@
         </div>
     </section>
 
-    {{-- <section class="py-10 bg-gray text-center">
-        <p class="text-lg text-[var(--theme-color)] mt-2">Meet Our Leaders</p>
+    {{-- music section  --}}
+    <section class="py-10 bg-white px-10">
+        <div class="py-4 flex flex-col items-center justify-center text-center h-full">
+            <h2 class="text-md text-[var(--theme-color)] font-bold" id="music-title">DPP Music Vibes</h2>
+            <p class="text-lg text-[var(--custom-black)] mt-2" id="music-subtitle">
+                Feel the rhythm, enjoy the beats, and celebrate with the
+                <span class="text-[var(--theme-color)]">best</span> tunes!
+            </p>
+        </div>
 
-        <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-6 md:px-10 max-w-7xl mx-auto">
-            <!-- President -->
-            <div
-                class="relative bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden leader-card">
-                <div class="w-full aspect-[3/4] overflow-hidden relative">
-                    <img src="{{ asset('assets/images/leaders/Peter-Mutharika.jpg') }}" alt="President"
-                        class="absolute inset-0 w-full h-full object-cover">
-                </div>
-                <div class="absolute bottom-0 bg-[var(--custom-orange)] text-white w-full py-4 px-6">
-                    <h3 class="text-xl font-semibold">Peter Mutharika</h3>
-                    <p class="text-sm">President of the Democratic Progressive Party</p>
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-6">
+            <!-- Left: Background Image -->
+            <div class="relative w-full md:w-1/2 h-[400px] rounded-lg overflow-hidden">
+                <img src="{{ asset('assets/images/music/charming-amazing-afro-american-young-woman-sunglasses-dancing.jpg') }}"
+                    alt="Person Listening to Music" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                    <h2 class="text-4xl font-bold text-white">Feel the Vibes</h2>
                 </div>
             </div>
 
-            <!-- Secretary General -->
-            <div
-                class="relative bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden leader-card">
-                <div class="w-full aspect-[3/4] overflow-hidden relative">
-                    <img src="{{ asset('assets/images/leaders/peter mukhito.jpg') }}" alt="Secretary General"
-                        class="absolute inset-0 w-full h-full object-cover">
-                </div>
-                <div class="absolute bottom-0 bg-[var(--custom-orange)] text-white w-full py-4 px-6">
-                    <h3 class="text-xl font-semibold">Peter Mukhito</h3>
-                    <p class="text-sm">Secretary General</p>
-                </div>
-            </div>
-
-            <!-- National Organiser Secretary-->
-            <div
-                class="relative bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden leader-card">
-                <div class="w-full aspect-[3/4] overflow-hidden relative">
-                    <img src="{{ asset('assets/images/leaders/sameer-suleman.jpg') }}"
-                        alt="National Organiser Secretary" class="absolute inset-0 w-full h-full object-cover">
-                </div>
-                <div class="absolute bottom-0 bg-[var(--custom-orange)] text-white w-full py-4 px-6">
-                    <h3 class="text-xl font-semibold">Sameer Suleman</h3>
-                    <p class="text-sm">National Organiser Secretary</p>
-                </div>
-            </div>
-
-            <!-- Director of Election-->
-            <div
-                class="relative bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden leader-card">
-                <div class="w-full aspect-[3/4] overflow-hidden relative">
-                    <img src="{{ asset('assets/images/leaders/dr jean muthanga.jpg') }}" alt="Director of Election"
-                        class="absolute inset-0 w-full h-full object-cover">
-                </div>
-                <div class="absolute bottom-0 bg-[var(--custom-orange)] text-white w-full py-4 px-6">
-                    <h3 class="text-xl font-semibold">Jean Muthaga</h3>
-                    <p class="text-sm">Director of Election</p>
-                </div>
-            </div>
-
-            <!-- Director of political affairs-->
-            <div
-                class="relative bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden leader-card">
-                <div class="w-full aspect-[3/4] overflow-hidden relative">
-                    <img src="{{ asset('assets/images/leaders/ben phiri.jpeg') }}"
-                        alt="Director of Political Affairs" class="absolute inset-0 w-full h-full object-cover">
-                </div>
-                <div class="absolute bottom-0 bg-[var(--custom-orange)] text-white w-full py-4 px-6">
-                    <h3 class="text-xl font-semibold">Ben Phiri</h3>
-                    <p class="text-sm">Director of Political Affairs</p>
-                </div>
-            </div>
-
-            <!-- Director of Women Affairs-->
-            <div
-                class="relative bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden leader-card">
-                <div class="w-full aspect-[3/4] overflow-hidden relative">
-                    <img src="{{ asset('assets/images/leaders/Mary-Navicha.jpg') }}" alt="Director of Women Affairs"
-                        class="absolute inset-0 w-full h-full object-cover">
-                </div>
-                <div class="absolute bottom-0 bg-[var(--custom-orange)] text-white w-full py-4 px-6">
-                    <h3 class="text-xl font-semibold">Mary Thom Navicha</h3>
-                    <p class="text-sm">Director of Women Affairs</p>
-                </div>
-            </div>
-
-            <!--National Director of youth-->
-            <div
-                class="relative bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden leader-card">
-                <div class="w-full aspect-[3/4] overflow-hidden relative">
-                    <img src="{{ asset('assets/images/leaders/norman chisale.jpg') }}" alt="Director of Youth"
-                        class="absolute inset-0 w-full h-full object-cover">
-                </div>
-                <div class="absolute bottom-0 bg-[var(--custom-orange)] text-white w-full py-4 px-6">
-                    <h3 class="text-xl font-semibold">Norman Chisale</h3>
-                    <p class="text-sm">Director of Youth</p>
-                </div>
+            <!-- Right: Music Player -->
+            <div class="w-full md:w-1/2 h-[400px] overflow-y-auto bg-gray-100 rounded-lg p-6 shadow-lg">
+                @forelse ($music as $track)
+                    <div class="mb-6 border-b border-gray-300 pb-4">
+                        <h3 class="text-lg font-semibold text-blue-700">{{ $track->title }}</h3>
+                        <p class="text-sm  mb-2">
+                            By <span class="font-medium">{{ $track->artist }}</span>
+                            — <span class="italic">{{ $track->category }}</span>
+                        </p>
+                        <audio controls class="w-full rounded text-blue-600 accent-blue-600">
+                            <source src="{{ asset('storage/' . $track->file) }}" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                @empty
+                    <p class="text-blue-500">No music tracks available.</p>
+                @endforelse
             </div>
         </div>
-    </section> --}}
+    </section>
 
 
-    <section class="py-10 bg-white px-10">
+    {{-- <section class="py-10 bg-white px-10">
         <div class="py-4 flex flex-col items-center justify-center text-center h-full">
             <h2 class="text-md text-[var(--theme-color)] font-bold" id="music-title">DPP Music Vibes</h2>
             <p class="text-lg text-[var(--custom-black)] mt-2" id="music-subtitle">
@@ -404,7 +348,7 @@
                 @endforelse
             </div>
         </div>
-    </section>
+    </section> --}}
 
 
 
