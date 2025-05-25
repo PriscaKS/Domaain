@@ -1,18 +1,6 @@
-@include('frontend.commons.header', ['pageTitle' => 'Dpp | News_detail'])
+@extends('layouts.front')
 
-<body class="bg-[var(--custom-white)] flex flex-col min-h-screen ubuntu-light">
-    <!-- NAVBAR CALL-->
-    <div class="sticky top-0 bg-white z-50 shadow-md">
-        @include('frontend.components.navbar')
-    </div>
-
-    <!-- SIDEBAR-->
-    @include('frontend.components.sidebar')
-
-    <!-- Overlay -->
-    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40" style="display: none;" onclick="closeSidebar()">
-    </div>
-
+@section('content')
     <!-- Background Image Section with Overlay -->
     <div class="background-container-music">
         <div class="overlay"></div> <!-- Gradient Overlay -->
@@ -50,8 +38,7 @@
                         <div
                             class="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden news-card">
                             @if ($item->featured_image)
-                                <img src="{{ asset('storage/' . $item->featured_image) }}" alt="Image"
-                                    class="w-full h-44 object-cover">
+                                <img src="{{ asset('storage/' . $item->featured_image) }}" alt="Image" class="w-full h-44 object-cover">
                             @endif
                             <div class="p-5">
                                 <h3 class="text-lg font-semibold mb-2 text-gray-900">{{ $item->title }}</h3>
@@ -69,15 +56,13 @@
         @endif
     </main>
 
-    <!-- FOOTER section call -->
-    <div class="w-full" id="footer-container"></div>
+@endsection
+@push('scripts')
 
-    <script src="/assets/js/navbar.js"></script>
-    <script src="/assets/js/sidebar.js"></script>
 
     <script>
         // Animate news cards on scroll
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Initialize GSAP ScrollTrigger
             gsap.registerPlugin(ScrollTrigger);
 
@@ -109,6 +94,4 @@
             });
         });
     </script>
-</body>
-
-</html>
+@endpush

@@ -38,11 +38,10 @@
                     <textarea name="description" rows="3" class="mt-2 p-2 w-full border rounded"></textarea>
                 </div>
 
-                <button type="submit"
-                    class="bg-indigo-600 text-white px-6 py-2 rounded hover:bg-indigo-700">Upload</button>
+                <button type="submit" class="bg-indigo-600 text-white px-6 py-2 rounded hover:bg-indigo-700">Upload</button>
             </form>
 
-            
+
 
             <!-- News Upload Section -->
             <div class="max-w-3xl mx-auto ">
@@ -122,14 +121,18 @@
                     </div>
 
                     <p class="text-gray-600 text-sm mb-4">Upload campaign songs, theme music, and audio content.</p>
-
+                    <div>
+                        @error('file')
+                            <div class="text-red-300">{{ $message }}</div>
+                        @enderror
+                    </div>
                     <div
                         class="upload-area border-2 border-dashed border-purple-300 rounded-lg p-6 text-center hover:bg-purple-50 transition-colors cursor-pointer">
                         <i class="fas fa-music text-3xl text-purple-500 mb-3"></i>
                         <p class="text-sm font-medium text-gray-700">Drag & drop audio files here</p>
                         <p class="text-xs text-gray-500 mt-1">or</p>
 
-                        <input type="file" name="file" accept=".mp3,.wav,.ogg" required
+                        <input type="file" id="file" name="file" accept=".mp3,.wav,.ogg" required
                             class="mt-3 mx-auto block text-sm text-gray-600">
 
                         <p class="text-xs text-gray-500 mt-3">Maximum file size: 20MB</p>

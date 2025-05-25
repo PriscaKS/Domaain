@@ -1,23 +1,6 @@
-@include('frontend.commons.header', ['pageTitle' => 'Dpp | contacts'])
+@extends('layouts.front', ['pageTitle' => 'Dpp | Contacts'])
 
-
-<body class="bg-[var(--custom-white)] flex flex-col min-h-screen ubuntu-light">
-
-    <!-- NAAVBAR CALL-->
-    {{-- <div id="navbar-container" class="sticky top-0 bg-white z-50 shadow-md"></div> --}}
-    <div class="sticky top-0 bg-white z-50 shadow-md">
-        @include('frontend.components.navbar')
-    </div>
-
-    <!-- SIDEBAR-->
-    {{-- <div id="sidebar-container"></div> --}}
-
-
-    <!-- Overlay -->
-    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40" style="display: none;"
-        onclick="closeSidebar()"></div>
-    @include('frontend.components.sidebar')
-
+@section('content')
 
 
 
@@ -155,11 +138,6 @@
     </div>
 
 
-    <!-- FOOTER section call -->
-    <div class="w-full" id="footer-container"></div>
+ @endsection
 
-    <script src="/assets/js/navbar.js"></script>
-    <script src="/assets/js/sidebar.js"></script>
-</body>
 
-</html>

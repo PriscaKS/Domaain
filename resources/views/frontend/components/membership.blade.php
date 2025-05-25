@@ -1,34 +1,18 @@
-@include('frontend.commons.header', ['pageTitle' => 'Dpp | Membership'])
+@extends('layouts.front', ['pageTitle' => 'Dpp | Membership'])
 
-
-<body class="bg-[var(--custom-white)] flex flex-col min-h-screen ubuntu-light">
-
-    <!-- Placeholder for navbar -->
-    {{-- <div id="navbar-container" class=" sticky top-0 bg-white z-50 shadow-md"></div> --}}
-    <div class="sticky top-0 bg-white z-50 shadow-md">
-        @include('frontend.components.navbar')
-    </div>
-    <!-- Overlay - Using display:none to ensure it's hidden -->
-    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40" style="display: none;"
-        onclick="closeSidebar()"></div>
-
-    <!-- Placeholder for sidebar -->
-    {{-- <div id="sidebar-container"></div> --}}
-
-    @include('frontend.components.sidebar')
+@section('content')
 
     <!-- Background Image Section with Overlay -->
     <div class="background-container-member">
         <div class="overlay"></div> <!-- Gradient Overlay -->
         <div class="text-container">
             <div class="home-link">Become a Member</div>
-            <a href="/index.html" class="contact-text">home / Become a Member</a>
+            <a href="{{  route('welcome') }}" class="contact-text">home / Become a Member</a>
         </div>
     </div>
 
     <!-- Volunteer Form Section -->
-    <div
-        class="flex justify-center items-center mt-6 bg-[var(--custom-white)] p-6 rounded-2xl w-full max-w-3xl mx-auto ">
+    <div class="flex justify-center items-center mt-6 bg-[var(--custom-white)] p-6 rounded-2xl w-full max-w-3xl mx-auto ">
         <!-- Centered with mx-auto -->
         <div class="w-full">
             <!-- Contact Us and Get in Touch Section -->
@@ -145,13 +129,12 @@
                             <label class="block font-medium text-gray-700">Are you a registered voter?*</label>
                             <div class="mt-2 space-x-4">
                                 <label class="inline-flex items-center">
-                                    <input type="radio" name="isRegisteredVoter" value="yes"
-                                        class="h-4 w-4 text-blue-600" required>
+                                    <input type="radio" name="isRegisteredVoter" value="yes" class="h-4 w-4 text-blue-600"
+                                        required>
                                     <span class="ml-2">Yes</span>
                                 </label>
                                 <label class="inline-flex items-center">
-                                    <input type="radio" name="isRegisteredVoter" value="no"
-                                        class="h-4 w-4 text-blue-600">
+                                    <input type="radio" name="isRegisteredVoter" value="no" class="h-4 w-4 text-blue-600">
                                     <span class="ml-2">No</span>
                                 </label>
                             </div>
@@ -168,7 +151,7 @@
                 <div class="bg-gray-50 p-4 rounded-lg mb-6">
                     <h3 class="text-lg font-bold text-gray-800 mb-4">Membership Details</h3>
                     <div class="space-y-4">
-                        
+
                         <div>
                             <label class="block font-medium text-gray-700">Areas of Interest (select all that
                                 apply)</label>
@@ -209,13 +192,11 @@
                             <label class="block font-medium text-gray-700">Would you like to volunteer?</label>
                             <div class="mt-2 space-x-4">
                                 <label class="inline-flex items-center">
-                                    <input type="radio" name="isVolunteer" value="yes"
-                                        class="h-4 w-4 text-blue-600">
+                                    <input type="radio" name="isVolunteer" value="yes" class="h-4 w-4 text-blue-600">
                                     <span class="ml-2">Yes</span>
                                 </label>
                                 <label class="inline-flex items-center">
-                                    <input type="radio" name="isVolunteer" value="no"
-                                        class="h-4 w-4 text-blue-600">
+                                    <input type="radio" name="isVolunteer" value="no" class="h-4 w-4 text-blue-600">
                                     <span class="ml-2">No</span>
                                 </label>
                             </div>
@@ -285,11 +266,4 @@
     </div>
 
 
-    <!-- FOOTER section call -->
-    <div class="w-full" id="footer-container"></div>
-    <script src="/assets/js/main.js"></script>
-    <script src="/assets/js/navbar.js"></script>
-    <script src="/assets/js/sidebar.js"></script>
-</body>
-
-</html>
+@endsection

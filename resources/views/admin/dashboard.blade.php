@@ -6,9 +6,13 @@
 
 @section('content')
     <div class="mb-8">
-        <h1 class="text-2xl font-bold text-gray-800 ">Admin / Dashboard</h1>
+        <h1 class="text-2xl font-bold text-gray-800  dark:bg-gray-900 dark:text-white">Admin / Dashboard</h1>
         <p class="text-gray-600">Welcome back! </p>
     </div>
+    <div class="p-6 text-center transition-colors duration-300 bg-white text-black dark:bg-gray-800 dark:text-white">
+        <p class="text-xl font-bold">Dark Mode Test Block</p>
+    </div>
+
     @include('frontend.commons.alerts')
     <!-- Stats Cards -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
@@ -123,29 +127,28 @@
 
             <div class="space-y-4">
                 @foreach ($activities as $activity)
-                    <div class="flex">
+                        <div class="flex">
 
-                        <div class="ml-4">
-                            {{-- <p class="text-sm font-medium {{ $colorClass }}">{{ $activity->title }}</p> --}}
-                            <p
-                                class="text-sm font-medium 
-    {{ $activity->type === 'create'
-        ? 'text-green-800'
-        : ($activity->type === 'update'
-            ? 'text-blue-800'
-            
-            : ($activity->type === 'delete'
-                ? 'text-red-800'
-                : ($activity->type === 'logout'
-                    ? 'text-pink-800'
-                    : 'text-gray-700'))) }}">
-                                {{ $activity->title }}
-                            </p>
+                            <div class="ml-4">
+                                {{-- <p class="text-sm font-medium {{ $colorClass }}">{{ $activity->title }}</p> --}}
+                                <p class="text-sm font-medium 
+                                {{ $activity->type === 'create'
+                    ? 'text-green-800'
+                    : ($activity->type === 'update'
+                        ? 'text-blue-800'
 
-                            <p class="text-xs text-gray-500">{{ $activity->description }}</p>
-                            <p class="text-xs text-gray-400 mt-1">{{ $activity->created_at->diffForHumans() }}</p>
+                        : ($activity->type === 'delete'
+                            ? 'text-red-800'
+                            : ($activity->type === 'logout'
+                                ? 'text-pink-800'
+                                : 'text-gray-700'))) }}">
+                                    {{ $activity->title }}
+                                </p>
+
+                                <p class="text-xs text-gray-500">{{ $activity->description }}</p>
+                                <p class="text-xs text-gray-400 mt-1">{{ $activity->created_at->diffForHumans() }}</p>
+                            </div>
                         </div>
-                    </div>
                 @endforeach
             </div>
         </div>
@@ -275,7 +278,7 @@
 @section('scripts')
     <script>
         // Initialize chart
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const ctx = document.getElementById('memberChart').getContext('2d');
             const memberChart = new Chart(ctx, {
                 type: 'line',
@@ -319,7 +322,7 @@
             });
 
             // Handle chart period change
-            document.getElementById('chart-period').addEventListener('change', function(e) {
+            document.getElementById('chart-period').addEventListener('change', function (e) {
                 let newData;
                 switch (e.target.value) {
                     case 'Last 7 days':
@@ -334,7 +337,7 @@
                         ];
                         memberChart.data.labels = Array.from({
                             length: 30
-                        }, (_, i) => `Day ${i+1}`);
+                        }, (_, i) => `Day ${i + 1}`);
                         break;
                     case 'Last 90 days':
                         newData = [65, 78, 90, 115, 137, 159, 180, 198, 215, 230, 245, 260];
@@ -352,7 +355,7 @@
         function initNotifications() {
             const notificationBell = document.getElementById('notification-bell');
             if (notificationBell) {
-                notificationBell.addEventListener('click', function() {
+                notificationBell.addEventListener('click', function () {
                     const notificationPanel = document.getElementById('notification-panel');
                     notificationPanel.classList.toggle('hidden');
                 });
@@ -379,7 +382,7 @@
             const sidebar = document.getElementById('sidebar');
 
             if (sidebarToggle && sidebar) {
-                sidebarToggle.addEventListener('click', function() {
+                sidebarToggle.addEventListener('click', function () {
                     sidebar.classList.toggle('-translate-x-full');
                 });
             }
@@ -389,30 +392,31 @@
         function initQuickActions() {
             const quickActionButtons = document.querySelectorAll('.quick-action-btn');
 
-            quickActionButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const action = this.getAttribute('data-action');
+            //     quickActionButtons.forEach(button => {
+            //         button.addEventListener('click', function () {
+            //             const action = this.getAttribute('data-action');
 
-                    {{-- switch(action) { --}}
-                    {{--    case 'create-post': --}}
-                    {{--        window.location.href = "{{ route('admin.posts.create') }}"; --}}
-                    {{--        break; --}}
-                    {{--    case 'add-member': --}}
-                    {{--        window.location.href = "{{ route('admin.members.create') }}"; --}}
-                    {{--        break; --}}
-                    {{--    case 'create-event': --}}
-                    {{--        window.location.href = "{{ route('admin.events.create') }}"; --}}
-                    {{--        break; --}}
-                    {{--    case 'view-reports': --}}
-                    {{--        window.location.href = "{{ route('admin.reports') }}"; --}}
-                    {{--        break; --}}
-                    {{-- } --}}
-                });
-            });
+            //             { { -- switch (action) { --} }
+            //             { { --    case 'create-post': --} }
+            //             { { --window.location.href = "{{ route('welcome') }}"; --} }
+            //             { { --        break; --} }
+            //             { { --    case 'add-member': --} }
+            //             { { --window.location.href = "{{ route('welcome') }}"; --} }
+            //             { { --        break; --} }
+            //             { { --    case 'create-event': --} }
+            //             { { --window.location.href = "{{ route('welcome') }}"; --} }
+            //             { { --        break; --} }
+            //             { { --    case 'view-reports': --} }
+            //             { { --window.location.href = "{{ route('welcome') }}"; --} }
+            //             { { --        break; --} }
+            //             { { -- } --}
+            //         }
+            //             });
+            // });
         }
 
         // Call all initialization functions
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             initNotifications();
             initDataTable();
             initSidebar();

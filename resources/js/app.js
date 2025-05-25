@@ -1,4 +1,10 @@
 import './bootstrap';
+import './navbar';
+import './sidebar';
+import './main';
+import './music';
+// import './theme';
+
 
 import Alpine from 'alpinejs';
 

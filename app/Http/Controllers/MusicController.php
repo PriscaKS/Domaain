@@ -29,34 +29,63 @@ class MusicController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'artist' => 'required|string|max:255',
-            'category' => 'required|string|max:100',
-            'file' => 'required|mimes:mp3,wav,ogg|max:20480', // 20MB max
-        ]);
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'title' => 'required|string|max:255',
+    //         'artist' => 'required|string|max:255',
+    //         'category' => 'required|string|max:100',
+    //         'file' => 'required|mimes:mp3,wav,ogg|max:20480', // 20MB max
+    //     ]);
 
-        // Store file
-        $path = $request->file('file')->store('music_files', 'public');
+    //     // Store file
+    //     $path = $request->file('file')->store('music_files', 'public');
 
-        Music::create([
-            'title' => $request->title,
-            'artist' => $request->artist,
-            'category' => $request->category,
-            'file' => $path,
-        ]);
+    //     Music::create([
+    //         'title' => $request->title,
+    //         'artist' => $request->artist,
+    //         'category' => $request->category,
+    //         'file' => $path,
+    //     ]);
 
 
-        logActivity(
-            'create',
-            'New music uploaded',
-            'Track: ' . $request->title
-        );
+    //     logActivity(
+    //         'create',
+    //         'New music uploaded',
+    //         'Track: ' . $request->title
+    //     );
 
-        return redirect()->route('music.index')->with('success', 'Music uploaded successfully');
-    }
+    //     return redirect()->route('music.index')->with('success', 'Music uploaded successfully');
+    // }
+public function store(Request $request)
+{
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'artist' => 'required|string|max:255',
+        'category' => 'required|string|max:100',
+        'file' => 'required|mimes:mp3,wav,ogg|max:20480', // 20MB max
+    ], [
+        'file.max' => 'The music file must not be greater than 20MB.',
+        'file.mimes' => 'The music file must be an MP3, WAV, or OGG file.',
+    ]);
+
+    $path = $request->file('file')->store('music_files', 'public');
+
+    Music::create([
+        'title' => $request->title,
+        'artist' => $request->artist,
+        'category' => $request->category,
+        'file' => $path,
+    ]);
+
+    logActivity(
+        'create',
+        'New music uploaded',
+        'Track: ' . $request->title
+    );
+
+    return redirect()->route('music.index')->with('success', 'Music uploaded successfully');
+}
 
     /**
      * Display the specified resource.
