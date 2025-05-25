@@ -1,33 +1,14 @@
-@include('frontend.commons.header', ['pageTitle' => 'Dpp | Home'])
+@extends('layouts.front',['pageTitle' => 'Dpp | HomePage'])
 
-<body class="bg-gray-100 ubuntu-light">
-
-    <!-- Placeholder for navbar -->
-    {{-- <div id="navbar-container" class="sticky top-0 bg-white z-50 shadow-md">
-
-    </div> --}}
-    <div class="sticky top-0 bg-white z-50 shadow-md">
-        @include('frontend.components.navbar')
-    </div>
-
-
-
-    <!-- Overlay - Using display:none to ensure it's hidden -->
-    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40" style="display: none;" onclick="closeSidebar()">
-    </div>
-
-    <!-- Placeholder for sidebar -->
-    {{-- <div id="sidebar-container"></div> --}}
-    @include('frontend.components.sidebar')
+@section('content')
 
 
     <!-- Landing Section -->
-    <section id="home" class="relative flex flex-col md:flex-row justify-center items-center text-center"
-        style="background-image: url('{{ asset('assets/images/bg-home.jpeg') }}');
-     background-size: cover;
-     background-position: center;
-     background-repeat: no-repeat;
-     min-height: 100vh;">
+    <section id="home" class="relative flex flex-col md:flex-row justify-center items-center text-center" style="background-image: url('{{ asset('assets/images/bg-home.jpeg') }}');
+             background-size: cover;
+             background-position: center;
+             background-repeat: no-repeat;
+             min-height: 100vh;">
 
         <!-- Dark Overlay -->
         <div class="absolute inset-0 bg-[var(--custom-black)] opacity-50"></div>
@@ -94,46 +75,41 @@
                     <ul class="mt-6 space-y-4 text-lg text-[var(--custom-black)]">
                         <li class="flex items-center" id="agenda-goal-1">
                             <svg xmlns="http://www.w3.org/2000/svg"
-                                class="h-6 w-6 text-[var(--custom-black)] font-bold mr-3" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7" />
+                                class="h-6 w-6 text-[var(--custom-black)] font-bold mr-3" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                             </svg>
                             Quality Education for All
                         </li>
                         <li class="flex items-center" id="agenda-goal-2">
                             <svg xmlns="http://www.w3.org/2000/svg"
-                                class="h-6 w-6 text-[var(--custom-black)] font-bold mr-3" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7" />
+                                class="h-6 w-6 text-[var(--custom-black)] font-bold mr-3" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                             </svg>
                             Economic Justice & Wealth Redistribution
                         </li>
                         <li class="flex items-center" id="agenda-goal-3">
                             <svg xmlns="http://www.w3.org/2000/svg"
-                                class="h-6 w-6 text-[var(--custom-black)] font-bold mr-3" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7" />
+                                class="h-6 w-6 text-[var(--custom-black)] font-bold mr-3" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                             </svg>
                             Nationalization of Key Sectors (Agriculture, Mining, Energy)
                         </li>
                         <li class="flex items-center" id="agenda-goal-4">
                             <svg xmlns="http://www.w3.org/2000/svg"
-                                class="h-6 w-6 text-[var(--custom-black)] font-bold mr-3" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7" />
+                                class="h-6 w-6 text-[var(--custom-black)] font-bold mr-3" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                             </svg>
                             Investing in Infrastructure to Build Stronger Communities
                         </li>
                         <li class="flex items-center" id="agenda-goal-5">
                             <svg xmlns="http://www.w3.org/2000/svg"
-                                class="h-6 w-6 text-[var(--custom-black)] font-bold mr-3" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M5 13l4 4L19 7" />
+                                class="h-6 w-6 text-[var(--custom-black)] font-bold mr-3" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                             </svg>
                             Closing Economic Disparities
                         </li>
@@ -238,8 +214,7 @@
                             Volunteer</span> </h3>
                     <p class="mt-4 text-lg">Join our efforts in making a positive change. Volunteer today to help
                         support our causes and make a difference in the community.</p>
-                    <button
-                        onclick="window.location.href='{{ route('loading-screen') }}?redirect={{ route('volunteer') }}'"
+                    <button onclick="window.location.href='{{ route('loading-screen') }}?redirect={{ route('volunteer') }}'"
                         class="mt-6 bg-blue-600 text-white py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300">
                         Sign Up to Volunteer
                     </button>
@@ -268,7 +243,7 @@
         </div>
     </section>
 
-    {{-- music section  --}}
+    {{-- music section --}}
     <section class="py-10 bg-white px-10">
         <div class="py-4 flex flex-col items-center justify-center text-center h-full">
             <h2 class="text-md text-[var(--theme-color)] font-bold" id="music-title">DPP Music Vibes</h2>
@@ -308,53 +283,13 @@
             </div>
         </div>
     </section>
+    <div class="w-full" id="history-container"></div>
+@endsection
 
 
-    {{-- <section class="py-10 bg-white px-10">
-        <div class="py-4 flex flex-col items-center justify-center text-center h-full">
-            <h2 class="text-md text-[var(--theme-color)] font-bold" id="music-title">DPP Music Vibes</h2>
-            <p class="text-lg text-[var(--custom-black)] mt-2" id="music-subtitle">
-                Feel the rhythm, enjoy the beats, and celebrate with the
-                <span class="text-[var(--theme-color)]">best</span> tunes!
-            </p>
-        </div>
-
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-6">
-            <!-- Left: Background Image -->
-            <div class="relative w-full md:w-1/2 h-[400px] rounded-lg overflow-hidden">
-                <img src="{{ asset('assets/images/music/charming-amazing-afro-american-young-woman-sunglasses-dancing.jpg') }}"
-                    alt="Person Listening to Music" class="w-full h-full object-cover">
-                <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                    <h2 class="text-4xl font-bold text-white">Feel the Vibes</h2>
-                </div>
-            </div>
-
-            <!-- Right: Music Player -->
-            <div class="w-full md:w-1/2 h-[400px] overflow-y-auto bg-gray-100 rounded-lg p-6 shadow-lg">
-                @forelse ($music as $track)
-                    <div class="mb-6 border-b border-gray-300 pb-4">
-                        <h3 class="text-lg font-semibold text-gray-800">{{ $track->title }}</h3>
-                        <p class="text-sm text-gray-600 mb-2">
-                            By <span class="font-medium">{{ $track->artist }}</span>
-                            — <span class="italic">{{ $track->category }}</span>
-                        </p>
-                        <audio controls class="w-full rounded">
-                            <source src="{{ asset('storage/' . $track->file) }}" type="audio/mpeg">
-                            Your browser does not support the audio element.
-                        </audio>
-                    </div>
-                @empty
-                    <p class="text-gray-500">No music tracks available.</p>
-                @endforelse
-            </div>
-        </div>
-    </section> --}}
-
-
-
-
+@push('scripts')
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Register GSAP plugins
             gsap.registerPlugin(ScrollTrigger);
 
@@ -439,17 +374,4 @@
         }
     </script>
 
-    <div class="w-full" id="history-container"></div>
-
-    <!-- FOOTER section call -->
-    @include('partials.footer')
-    {{-- <div class="w-full" id="footer-container"></div> --}}
-
-
-    <script src="{{ asset('assets/js/navbar.js') }}"></script>
-    <script src="{{ asset('assets/js/sidebar.js') }}"></script>
-    <script src="{{ asset('assets/js/music.js') }}"></script>
-    <script src="{{ asset('assets/js/main.js') }}"></script>
-</body>
-
-</html>
+@endpush

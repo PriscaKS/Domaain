@@ -1,6 +1,7 @@
 <!-- layouts/admin.blade.php -->
 <!DOCTYPE html>
-<html lang="en" class="{{ session('theme') === 'dark' ? 'dark' : '' }}">
+{{-- <html lang="en" class="{{ session('theme') === 'dark' ? 'dark' : '' }}"> --}}
+<html lang="en" id="html-root">
 
 <head>
     <meta charset="UTF-8">
@@ -57,7 +58,7 @@
     style="font-family: 'Ubuntu', sans-serif;">
     <!-- Sidebar -->
     <div id="sidebar" class="sidebar bg-white w-64 shadow-lg h-full flex flex-col dark:bg-gray-900 dark:text-white">
-        <div class="p-5 border-b border-gray-100">
+        <div class="p-5 border-b border-gray-100 border-gray-100 dark:border-gray-700">
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
                     <div
@@ -71,9 +72,9 @@
         </div>
 
         <div class="flex-1 overflow-y-auto p-4">
-            <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">
-                Main
-            </p>
+            <p class="text-xs font-semibold text-gray-400 dark:text-gray-300 uppercase tracking-wider mb-4">
+    Main
+</p>
 
             <a href="{{ route('admin.dashboard') }}"
                 class="@if (request()->routeIs('admin.dashboard')) sidebar-active @endif flex items-center py-2 px-3 rounded-lg @if (request()->routeIs('admin.dashboard')) text-indigo-600 @else text-gray-600 hover:bg-gray-50 @endif mb-2 font-medium">
@@ -179,30 +180,14 @@
 
                 <div class="flex items-center">
                     {{-- theme --}}
-                    <div class="flex items-center space-x-2">
-                        <span class="text-sm text-green-400">Light</span>
-                        {{-- <form method="POST" action="{{ route('toggle.theme') }}">
-                            @csrf
-                            <button type="submit"
-                                class="w-10 h-5 flex items-center bg-gray-300 dark:bg-gray-600 rounded-full p-1 transition duration-300 focus:outline-none">
-                                <div
-                                    class="bg-white w-4 h-4 rounded-full shadow-md transform transition duration-300 dark:translate-x-5">
-                                </div>
-                            </button>
-                        </form> --}}
-                        <form method="POST" action="{{ route('toggle.theme') }}">
-                            @csrf
-                            <button type="submit"
-                                class="relative w-12 h-6 rounded-full transition-colors duration-300 focus:outline-none
-        {{ session('theme') === 'dark' ? 'bg-gray-700' : 'bg-gray-300' }}">
-                                <span
-                                    class="absolute left-0 top-0 w-6 h-6 bg-white rounded-full shadow transform transition-transform duration-300
-            {{ session('theme') === 'dark' ? 'translate-x-6' : '' }}"></span>
-                            </button>
-                        </form>
-
-                        <span class="text-sm text-green-400">Dark</span>
-                    </div>
+    <button id="theme-toggle" class="p-2 text-xl">
+  <span class="block dark:hidden">
+    <i class="fas fa-moon"></i> <!-- Show in light mode -->
+  </span>
+  <span class="hidden dark:block">
+    <i class="fas fa-sun"></i> <!-- Show in dark mode -->
+  </span>
+</button>
 
                     {{-- end theme  --}}
 
@@ -310,9 +295,9 @@
     </script>
 
 
-
-    @yield('scripts')
-    <script src="//unpkg.com/alpinejs" defer></script>
+@yield('scripts')
+<script src="//unpkg.com/alpinejs" defer></script>
+@vite('resources/js/theme.js')
 
 </body>
 

@@ -1,4 +1,5 @@
-@include('frontend.commons.header', ['pageTitle' => 'Dpp | News'])
+@push('styles')
+
 
     <style>
         :root {
@@ -84,26 +85,18 @@
         }
     </style>
 
+@endpush
+@extends('layouts.front', ['pageTitle' => 'Dpp | News'])
 
-<body class="bg-[var(--custom-white)] flex flex-col min-h-screen ubuntu-light">
-    <!-- NAVBAR CALL-->
-    <div class="sticky top-0 bg-white z-50 shadow-md">
-        @include('frontend.components.navbar')
-    </div>
+@section('content')
 
-    <!-- SIDEBAR-->
-    @include('frontend.components.sidebar')
-
-    <!-- Overlay -->
-    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40" style="display: none;"
-        onclick="closeSidebar()"></div>
 
     <!-- Background Image Section with Overlay -->
     <div class="background-container-music">
         <div class="overlay"></div> <!-- Gradient Overlay -->
         <div class="text-container">
             <div class="home-link playfair text-5xl md:text-7xl font-bold mb-6 animate-float">DPP News</div>
-            <a href="{{ url ('/')}}" class="contact-text">Home / </a>
+            <a href="{{ url('/')}}" class="contact-text">Home / </a>
             <span class="text-blue-400 font-medium font-bold">News</span>
         </div>
     </div>
@@ -148,8 +141,7 @@
             <div class="bg-white rounded-xl shadow-sm overflow-hidden mb-12">
                 <div class="md:flex">
                     <div class="md:w-1/2">
-                        <img src="/api/placeholder/800/600" alt="Featured news"
-                            class="w-full h-64 md:h-full object-cover">
+                        <img src="/api/placeholder/800/600" alt="Featured news" class="w-full h-64 md:h-full object-cover">
                     </div>
                     <div class="md:w-1/2 p-6 md:p-8">
                         <div class="flex items-center mb-4">
@@ -204,15 +196,12 @@
 
     </main>
 
-    <!-- FOOTER section call -->
-    <div class="w-full" id="footer-container"></div>
-
-    <script src="/assets/js/navbar.js"></script>
-    <script src="/assets/js/sidebar.js"></script>
+@endsection
+@push('scripts')
 
     <script>
         // Animate news cards on scroll
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Initialize GSAP ScrollTrigger
             gsap.registerPlugin(ScrollTrigger);
 
@@ -244,6 +233,5 @@
             });
         });
     </script>
-</body>
 
-</html>
+@endpush

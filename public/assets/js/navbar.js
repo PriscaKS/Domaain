@@ -11,12 +11,6 @@ document.addEventListener("DOMContentLoaded", function() {
            function attachNavbarEvents() {
             const menuToggle = document.getElementById("menu-toggle");
 
-            // if (menuToggle) {
-            //     menuToggle.addEventListener("click", () => {
-            //         // You can handle the mobile menu toggle here
-            //         alert('Menu button clicked!');
-            //         // Add your mobile menu toggle logic here (e.g., toggle a class to show/hide menu)
-            //     });
-            // }
+           
         }
 });

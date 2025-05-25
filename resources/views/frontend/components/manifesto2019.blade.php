@@ -1,22 +1,6 @@
-@include('frontend.commons.header', ['pageTitle' => 'Dpp | manfesto2019'])
+@extends('layouts.front', ['pageTitle' => 'Dpp | 2019_manifesto'])
 
-
-
-</head>
-
-<body class="bg-[var(--custom-white)] flex flex-col min-h-screen ubuntu-light">
-    <!-- NAAVBAR CALL-->
-    {{-- <div id="navbar-container" class="sticky top-0 bg-white z-50 shadow-md"></div> --}}
-    <div class="sticky top-0 bg-white z-50 shadow-md">
-        @include('frontend.components.navbar')
-    </div>
-    <!-- SIDEBAR-->
-    {{-- <div id="sidebar-container"></div> --}}
-    @include('frontend.components.sidebar')
-
-    <!-- Overlay -->
-    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40" style="display: none;"
-        onclick="closeSidebar()"></div>
+@section('content')
 
     <!-- Background Image Section with Overlay -->
     <div class="background-container-documents">
@@ -37,8 +21,8 @@
 
         <!-- Embedded Online PDF -->
         <div class="w-full h-[500px] border rounded-lg shadow-md">
-            <iframe src="https://mininginmalawi.files.wordpress.com/2019/05/dpp-manifesto-2019.pdf"
-                class="w-full h-full" frameborder="0"></iframe>
+            <iframe src="https://mininginmalawi.files.wordpress.com/2019/05/dpp-manifesto-2019.pdf" class="w-full h-full"
+                frameborder="0"></iframe>
         </div>
 
         <!-- Download Button -->
@@ -50,14 +34,4 @@
 
 
 
-
-
-    <!-- FOOTER section call -->
-    <div class="w-full" id="footer-container"></div>
-
-
-    <script src="/assets/js/navbar.js"></script>
-    <script src="/assets/js/sidebar.js"></script>
-</body>
-
-</html>
+@endsection
