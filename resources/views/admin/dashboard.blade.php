@@ -211,7 +211,7 @@
                                 </div>
                             </div>
                         </td>
-                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-800">Donation confirmation</td>
+                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-800">Donation</td>
                         <td class="px-4 py-3 whitespace-nowrap">
                             <span class="px-2 py-1 text-xs font-medium rounded-full bg-yellow-100 text-yellow-800">
                                 Flagged
