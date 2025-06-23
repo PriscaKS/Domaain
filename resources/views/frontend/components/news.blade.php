@@ -133,40 +133,7 @@
             </div>
         </div>
 
-        <!-- Featured News -->
-        <div class="mb-16">
-            <h2 class="text-3xl font-bold playfair mb-8 pb-2 border-b-2 border-blue-600 inline-block">Featured News</h2>
-
-            <!-- Featured News Card -->
-            <div class="bg-white rounded-xl shadow-sm overflow-hidden mb-12">
-                <div class="md:flex">
-                    <div class="md:w-1/2">
-                        <img src="/api/placeholder/800/600" alt="Featured news" class="w-full h-64 md:h-full object-cover">
-                    </div>
-                    <div class="md:w-1/2 p-6 md:p-8">
-                        <div class="flex items-center mb-4">
-                            <span class="bg-blue-600 text-white text-xs px-3 py-1 rounded-full mr-3">Technology</span>
-                            <span class="text-gray-500 text-sm">May 10, 2025</span>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-4 playfair">Breakthrough in Quantum Computing Sets New Records
-                        </h3>
-                        <p class="text-gray-700 mb-6">Scientists have achieved a major breakthrough in quantum
-                            computing, creating a stable quantum bit that maintains coherence for record-breaking
-                            durations, paving the way for practical quantum applications.</p>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center">
-                                <img src="/api/placeholder/40/40" alt="Author" class="w-8 h-8 rounded-full mr-2">
-                                <span class="text-sm font-medium">Dr. Maria Chen</span>
-                            </div>
-                            <a href="#" class="text-blue-600 font-medium hover:underline flex items-center">
-                                Read More <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+    
         <!-- Latest News -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach ($newsList as $news)
